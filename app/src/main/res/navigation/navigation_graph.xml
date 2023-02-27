@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/HomePageFragment">
+    <fragment
+        android:id="@+id/HomePageFragment"
+        android:name="HomePageFragment"
+        android:label="HomePageFragment" >
+        <action
+            android:id="@+id/action_HomePageFragment_to_aggiungiVeicolo"
+            app:destination="@id/aggiungiVeicolo" />
+        <action
+            android:id="@+id/action_HomePageFragment_to_aggiungiCliente"
+            app:destination="@id/aggiungiCliente" />
+        <action
+            android:id="@+id/action_HomePageFragment_to_aggiungiIntervento"
+            app:destination="@id/aggiungiIntervento" />
+        <action
+            android:id="@+id/action_HomePageFragment_to_listaClienti"
+            app:destination="@id/listaClienti" />
+        <action
+            android:id="@+id/action_HomePageFragment_to_listaVeicoli"
+            app:destination="@id/listaVeicoli" />
+        <action
+            android:id="@+id/action_HomePageFragment_to_listaInterventi"
+            app:destination="@id/listaInterventi" />
+    </fragment>
+    <fragment
+        android:id="@+id/aggiungiCliente"
+        android:name="AggiungiCliente"
+        android:label="AggiungiCliente" >
+        <action
+            android:id="@+id/action_aggiungiCliente_to_listaClienti"
+            app:destination="@id/listaClienti" />
+    </fragment>
+    <fragment
+        android:id="@+id/aggiungiVeicolo"
+        android:name="AggiungiVeicolo"
+        android:label="AggiungiVeicolo" >
+        <action
+            android:id="@+id/action_aggiungiVeicolo_to_listaVeicoli"
+            app:destination="@id/listaVeicoli" />
+    </fragment>
+    <fragment
+        android:id="@+id/aggiungiIntervento"
+        android:name="AggiungiIntervento"
+        android:label="AggiungiIntervento" >
+        <action
+            android:id="@+id/action_aggiungiIntervento_to_listaInterventi"
+            app:destination="@id/listaInterventi" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaClienti"
+        android:name="com.example.autofficina.fragments.ListaClienti"
+        android:label="ListaClienti" >
+        <action
+            android:id="@+id/action_listaClienti_to_HomePageFragment"
+            app:destination="@id/HomePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaVeicoli"
+        android:name="com.example.autofficina.fragments.ListaVeicoli"
+        android:label="ListaVeicoli" >
+        <action
+            android:id="@+id/action_listaVeicoli_to_HomePageFragment"
+            app:destination="@id/HomePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaInterventi"
+        android:name="com.example.autofficina.fragments.ListaInterventi"
+        android:label="ListaInterventi" >
+        <action
+            android:id="@+id/action_listaInterventi_to_HomePageFragment"
+            app:destination="@id/HomePageFragment" />
+    </fragment>
+</navigation>
