@@ -1,20 +1,21 @@
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.autofficina.R
 import com.example.autofficina.entities.Veicolo
-import com.example.autofficina.servizi.ServiziClienti
-import com.example.autofficina.servizi.ServiziVeicoli
+import com.example.autofficina.viewModel.ViewModelVeicolo
 
 class AggiungiVeicolo : Fragment() {
     private lateinit var spinner: Spinner
+    private lateinit var mClientiViewModel: ViewModelCliente
+    private lateinit var mVeicoliViewModel: ViewModelVeicolo
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,37 +27,51 @@ class AggiungiVeicolo : Fragment() {
         return view
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listaClienti = ServiziClienti.tuttiClienti()
+        mClientiViewModel = ViewModelProvider(this).get(ViewModelCliente::class.java)
+        mVeicoliViewModel = ViewModelProvider(this).get(ViewModelVeicolo::class.java)
 
-        val listaNomiClienti = mutableListOf<String>()
-        listaClienti.forEach {
-            listaNomiClienti.add("${it.nome}${it.cognome}")
+        mClientiViewModel.tuttiClienti().observe(viewLifecycleOwner) { clienti ->
+            val listaNomiClienti = mutableListOf<String>()
+            clienti.forEach {
+                listaNomiClienti.add("${it.nome} ${it.cognome}")
+            }
+
+            val spinnerAdapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                listaNomiClienti
+            )
+            spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = spinnerAdapter
+
+            view.findViewById<Button>(R.id.bottoneAggVeicolo).setOnClickListener {
+                val numeroTelaio =
+                    view.findViewById<EditText>(R.id.numeroTelaio_editText).text.toString()
+                val marca = view.findViewById<EditText>(R.id.marca_editText).text.toString()
+                val modello = view.findViewById<EditText>(R.id.modello_editText).text.toString()
+                val targa = view.findViewById<EditText>(R.id.targa_editText).text.toString()
+                val id_cliente = spinner.selectedItemPosition
+                val cliente = clienti[id_cliente]
+
+                mVeicoliViewModel.salvaVeicolo(
+                    Veicolo(
+                        0,
+                        numeroTelaio,
+                        marca,
+                        modello,
+                        targa,
+                        cliente.id
+                    )
+                )
+
+                Toast.makeText(requireContext(), "Veicolo Inserito!", Toast.LENGTH_SHORT).show()
+
+                findNavController().navigate(R.id.action_aggiungiVeicolo_to_listaVeicoli)
+            }
         }
+    }}
 
-        // Crea un ArrayAdapter per il spinner con la lista dei nomi dei clienti
-        val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, listaNomiClienti)
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = spinnerAdapter // Imposta l'adapter per il spinner
-
-        view.findViewById<Button>(R.id.agg_veicolo).setOnClickListener {
-            // Prende i valori dei campi di input dall'interfaccia utente
-            val numeroTelaio = view.findViewById<EditText>(R.id.numeroTelaio_editText).text.toString()
-            val marca = view.findViewById<EditText>(R.id.marca_editText).text.toString()
-            val modello = view.findViewById<EditText>(R.id.modello_editText).text.toString()
-            val targa = view.findViewById<EditText>(R.id.modello_editText).text.toString()
-
-            // Prende l'ID del cliente selezionato dallo spinner
-            val id_cliente = spinner.selectedItemPosition
-            val cliente = listaClienti[id_cliente]
-
-            // Aggiunge il nuovo veicolo al database utilizzando il servizio Veicoli
-            ServiziVeicoli.aggiungiVeicolo(Veicolo(0, numeroTelaio, marca, modello, targa,cliente.id))
-
-            // Naviga alla lista dei veicoli
-            findNavController().navigate(R.id.action_aggiungiVeicolo_to_listaVeicoli)
-        }
-    }
-}

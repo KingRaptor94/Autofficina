@@ -1,4 +1,4 @@
-package com.example.autofficina.servizi
+/*package com.example.autofficina.servizi
 
 import com.example.autofficina.dao.DaoVeicoli
 
@@ -34,3 +34,4 @@ object ServiziVeicoli : IServiziVeicoli {
 
     }
 }
+*/

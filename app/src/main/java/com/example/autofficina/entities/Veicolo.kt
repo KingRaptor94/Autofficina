@@ -1,10 +1,14 @@
 package com.example.autofficina.entities
 
+
+import com.example.autofficina.entities.Cliente
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.ForeignKey.Companion.SET_NULL
 import androidx.room.PrimaryKey
+
+
 
 // Indica che la classe rappresenta una tabella nel database con nome "Intervento"
 @Entity(
@@ -25,6 +29,6 @@ data class Veicolo(
     val modello:String,
     val targa:String,
     @ColumnInfo(name = "id_cliente")
-    val idCliente: Long?
+    val id_cliente: Long?
 
 )

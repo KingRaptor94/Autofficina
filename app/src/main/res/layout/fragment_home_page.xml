@@ -1,52 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="0dp"
+    android:layout_margin="0dp"
     tools:context=".fragments.HomePageFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/homebackground"
+        android:alpha="1"
+        android:scaleType="centerCrop"
+        android:padding="0dp"
+        android:layout_margin="0dp"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="230dp"
+        android:src="@drawable/hometitle"
+        android:alpha="1"
+        android:layout_marginTop="50dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/vogue"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:padding="20sp"
+        android:shadowColor="@color/black"
+        android:shadowDx="20"
+        android:shadowDy="20"
+        android:shadowRadius="20"
+        android:text="GESTORE OFFICINA"
+        android:textColor="#ECECEC"
+        android:textSize="50sp"
+        android:textStyle="bold"
+
+
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="250dp"
+        android:paddingHorizontal="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#CACACA"
-            android:backgroundTint="#9C9C9C"
-            android:gravity="center"
-            android:padding="20sp"
-            android:text="GESTORE OFFICINA"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="50dp">
+            android:paddingTop="80dp">
 
             <Button
                 android:id="@+id/lista_clienti"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/black"
-                android:text="LISTA CLIENTI"
-                />
+                android:layout_weight="6"
+                android:drawableBottom="@drawable/lista_clienti"
+                android:text="LISTA CLIENTI" />
 
             <Button
                 android:id="@+id/agg_cliente"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/black"
-                android:text="Aggiungi Cliente" />
+                android:text="AGGIUNGI"
+                android:drawableBottom="@drawable/agg_icon"
+                />
+
 
         </LinearLayout>
 
@@ -60,9 +91,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/black"
-                android:text="LISTA VEICOLI" />
+                android:layout_weight="6"
+                android:text="LISTA VEICOLI"
+                android:drawableBottom="@drawable/lista_veicoli" />
 
             <Button
                 android:id="@+id/agg_veicolo"
@@ -70,8 +101,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/black"
-                android:text="Aggiungi Veicolo" />
+                android:text="AGGIUNGI"
+                android:drawableBottom="@drawable/agg_icon" />
 
         </LinearLayout>
 
@@ -85,9 +116,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
+                android:layout_weight="6"
                 android:backgroundTint="@color/black"
-                android:text="LISTA INTERVENTI" />
+                android:text="LISTA INTERVENTI"
+                android:drawableBottom="@drawable/lista_interventi" />
 
             <Button
                 android:id="@+id/agg_intervento"
@@ -95,8 +127,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/black"
-                android:text="Aggiungi Intervento" />
+                android:text="AGGIUNGI"
+                android:drawableBottom="@drawable/agg_icon" />
 
         </LinearLayout>
 
@@ -104,4 +136,4 @@
     </LinearLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

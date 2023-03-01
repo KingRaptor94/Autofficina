@@ -6,32 +6,21 @@ import androidx.room.Insert
 import androidx.room.Query
 import com.example.autofficina.entities.Cliente
 
-/**
 
-DAO per l'entità Cliente, necessario all'applicazione per funzionare.
-
-@Dao indica che questa è un'interfaccia DAO (Data Access Object).
- */
+//Definizione interfaccia DAO
 @Dao
 interface DaoClienti {
 
-    /**
+    @Query ("SELECT * FROM cliente WHERE id = :id")
+    fun ottieniCliente(id: Long): Cliente
 
-    Recupera tutti i clienti presenti nella tabella "Cliente".
-    @return una lista contenente tutti i clienti presenti nella tabella "Cliente".
-     */
-    @Query("SELECT * FROM Cliente ")
-    fun tuttiClienti(): List<Cliente>
-    /**
-
-    Salva un nuovo cliente nella tabella "Cliente".
-    @param cliente i dati del nuovo cliente da salvare.
-    @return il valore della chiave primaria dell'elemento inserito.
-     */
+    // Il metodo salva()  viene utilizzato per inserire un nuovo oggetto Cliente nel database
     @Insert
-    fun salva(cliente : Cliente)
+    suspend fun salva(cliente: Cliente)
 
-  /*  fun ottieniCliente(id: Long): Cliente*/
-
+    //ottenere tutti gli oggetti Cliente presenti nel database
+    @Query("SELECT * FROM cliente ")
+    //LiveData garantisce un aggiornamento reattivo dell'interfaccia utente
+    fun tuttiClienti(): LiveData<List<Cliente>>
 
 }

@@ -3,22 +3,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sfondolista"
     android:orientation="vertical">
 
-    <TextView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:padding="0dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="210dp"
+            android:alpha="1"
+            android:src="@drawable/hometitle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/vogue"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:padding="60sp"
+            android:shadowColor="@color/black"
+            android:shadowDx="20"
+            android:shadowDy="20"
+            android:shadowRadius="20"
+            android:text="LISTA\nINTERVENTI"
+            android:textColor="#ECECEC"
+            android:textSize="45sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Problema"
+            android:textSize="15dp"
+            android:textColor="#ECECEC"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Ore di Lavoro"
+            android:textSize="15dp"
+            android:textColor="#ECECEC"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Ora Arrivo"
+            android:textSize="15dp"
+            android:textColor="#ECECEC"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Ora di Ritiro"
+            android:textSize="15dp"
+            android:textColor="#ECECEC"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Veicolo"
+            android:textSize="15dp"
+            android:textColor="#ECECEC"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/interventi_lista"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/intervento_singolo"/>
+
+    <Button
+        android:id="@+id/home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"
-        android:text="LISTA INTERVENTI"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/interventiRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/black"
+        android:drawableBottom="@drawable/home_icon"
+        android:padding="12dp"
+        android:text="Torna alla Home" />
 
 </LinearLayout>
+

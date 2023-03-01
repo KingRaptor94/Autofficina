@@ -1,3 +1,4 @@
+/*
 package com.example.autofficina.servizi
 
 
@@ -18,3 +19,4 @@ interface IServiziIntervento {
     // restituisce una lista di tutti gli interveneti presenti nel database
     fun tuttiInterventi(): List<Intervento>
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.example.autofficina.servizi
 
 
@@ -20,3 +21,4 @@ interface IServiziVeicoli {
 }
 
 
+*/

@@ -1,5 +1,6 @@
 package com.example.autofficina.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -20,8 +21,8 @@ interface DaoInterventi {
      * La query specificata seleziona tutti gli elementi dalla tabella "Intervento".
      * È dichiarato "suspend" perché questa funzione deve essere eseguita in un thread separato per evitare di bloccare il thread principale dell'app.
      */
-    @Query("SELECT * FROM Intervento")
-    suspend fun tuttiInterventi(): List<Intervento>
+    @Query("SELECT * FROM intervento")
+    fun tuttiInterventi(): LiveData<List<Intervento>>
 
     /**
      * Salva un intervento nel database.

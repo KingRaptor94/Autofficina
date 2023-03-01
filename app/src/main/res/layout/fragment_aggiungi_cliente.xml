@@ -3,18 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/sfondoinserisci">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:padding="0dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="210dp"
+            android:alpha="1"
+            android:src="@drawable/hometitle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/vogue"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:padding="60sp"
+            android:shadowColor="@color/black"
+            android:shadowDx="20"
+            android:shadowDy="20"
+            android:shadowRadius="20"
+            android:text="AGGIUNGI CLIENTE"
+            android:textColor="#ECECEC"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="INSERISCI I DATI DEL CLIENTE"
-        android:textSize="24sp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginBottom="16dp"/>
+
+<TextView
+    android:text="Inserisci i dati richiesti"
+    android:textAllCaps="true"
+    android:gravity="center"
+    android:textSize="25dp"
+    android:textColor="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:shadowDx="20"
+    android:shadowDy="20"
+    android:shadowRadius="20"/>
+
 
 
     <EditText
@@ -22,7 +62,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="Inserisci il nome" />
+        android:hint="Inserisci il nome"
+        android:padding="10dp"
+        android:background="#ECECEC"
+        android:textStyle="italic"
+        android:autofillHints="name"
+        android:capitalize="words"
+        />
 
     <EditText
         android:id="@+id/cognome_editText"
@@ -30,15 +76,24 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Inserisci il cognome"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:background="#ECECEC"
+        android:textStyle="italic"
+        android:autofillHints="name"
+        android:capitalize="words"/>
 
     <EditText
         android:id="@+id/email_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="Inserisci la Email"
-        android:padding="10dp"/>
+        android:autoLink="email"
+        android:hint="Inserisci l'email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:background="#ECECEC"
+        android:textStyle="italic"
+        android:autofillHints="emailAddress" />
 
     <Button
         android:id="@+id/bottoneAggCliente"
@@ -47,6 +102,8 @@
         android:layout_margin="16dp"
         android:text="Aggiungi Cliente"
         android:backgroundTint="@color/black"
-        android:padding="10dp"/>
-
+        android:padding="10dp"
+        />
 </LinearLayout>
+
+    </LinearLayout>

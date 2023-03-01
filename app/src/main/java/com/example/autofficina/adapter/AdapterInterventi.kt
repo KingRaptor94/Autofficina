@@ -9,37 +9,47 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.autofficina.R
 import com.example.autofficina.entities.Intervento
 
+class AdapterInterventi(private val ctx: Context) : RecyclerView.Adapter<AdapterInterventi.ViewHolder>() {
 
-class AdapterInterventi(private val ctx: Context, private val data: List<Intervento>) : RecyclerView.Adapter<AdapterInterventi.ViewHolder>() {
+    private var data: List<Intervento> = mutableListOf()
 
-    // ViewHolder interno alla classe AdapterInterventi
+    // ViewHolder interno alla classe AdapterVeicoli
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         // Dichiarazione degli elementi della view da popolare
-        private val problemaView: TextView =v.findViewById(R.id.problemaIntervento)
-        private val oreLavoroView: TextView =v.findViewById(R.id.oreLavoroIntervento)
-        private val oraArrivoView: TextView =v.findViewById(R.id.oraArrivoIntervento)
-        private val oraRitiroView: TextView =v.findViewById(R.id.oraRitiroIntervento)
 
-        // Metodo per popolare la view con i dati dell'intervento
-        fun mostraIntervento(intervento: Intervento){
+        // Inizializzazione delle TextView del layout intervento_singolo
+        private val problemaView: TextView = itemView.findViewById(R.id.problemaIntervento)
+        private val oreLovoroView: TextView = itemView.findViewById(R.id.oreLavoroIntervento)
+        private val oraArrivo: TextView = itemView.findViewById(R.id.oraArrivoIntervento)
+        private val oraRitiro: TextView = itemView.findViewById(R.id.oraRitiroIntervento)
+        val veicoloIdView: TextView = itemView.findViewById(R.id.id_veicolo)
+
+        // Metodo che popola le TextView con i dati dell'intervento passato come parametro
+        fun mostraIntervento(intervento: Intervento) {
             problemaView.text = intervento.problema
-            oreLavoroView.text = intervento.oreLavoro
-            oraArrivoView.text = intervento.oraArrivo
-            oraRitiroView.text = intervento.oraRitiro
+            oreLovoroView.text = intervento.oreLavoro
+            oraArrivo.text = intervento.oraArrivo
+            oraRitiro.text = intervento.oraRitiro
         }
     }
 
     // Metodo che viene chiamato per creare una nuova view holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(
-            LayoutInflater.from(ctx).inflate(R.layout.intervento_singolo, parent, false)
-        )
+        ViewHolder(LayoutInflater.from(ctx).inflate(R.layout.intervento_singolo, parent, false))
 
     // Metodo che restituisce la dimensione della lista di interventi da visualizzare
     override fun getItemCount(): Int = data.size
 
     // Metodo chiamato per associare i dati ad una view holder specifica
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.mostraIntervento(data[position])
+    override fun onBindViewHolder(holder: AdapterInterventi.ViewHolder, position: Int) {
+        val interventoCorrente = data[position]
+        holder.mostraIntervento(interventoCorrente)
+        holder.veicoloIdView.text = "ID Veicolo: ${interventoCorrente.idVeicolo}"
+    }
+
+    // Metodo che aggiorna i dati dell'adapter con la nuova lista di interventi
+    fun setData(data: List<Intervento>) {
+        this.data = data
+        notifyDataSetChanged()
     }
 }

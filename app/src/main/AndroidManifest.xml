@@ -11,9 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Autofficina"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@drawable/ic_launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

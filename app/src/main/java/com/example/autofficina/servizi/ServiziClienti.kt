@@ -1,3 +1,4 @@
+/*
 package com.example.autofficina.servizi
 
 
@@ -34,6 +35,7 @@ object ServiziClienti : IServiziClienti {
         }
         return data ?: listOf(Cliente(0, "", "", ""))
     }
+*/
 /*
     override fun ottieniCLiente(id: Long): Cliente? {
         var data: Cliente? = null
@@ -41,7 +43,8 @@ object ServiziClienti : IServiziClienti {
             data = DaoClienti.ottieniCLiente(id)
         }
     }
-*/
+*//*
 
 
-    }
+
+    }*/

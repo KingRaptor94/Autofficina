@@ -27,5 +27,5 @@ data class Intervento(
     val oraArrivo: String,
     val oraRitiro: String,
     @ColumnInfo(name = "id_veicolo")
-    val idMacchina: Long?,
+    val idVeicolo: Long?,
 )

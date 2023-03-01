@@ -47,7 +47,12 @@ class HomePageFragment : Fragment() {
 
         // Gestione del click sul bottone Aggiungi Intervento
         view.findViewById<Button>(R.id.agg_intervento).setOnClickListener {
-            view.findNavController().navigate(R.id.agg_intervento)
+            view.findNavController().navigate(R.id.action_HomePageFragment_to_aggiungiIntervento)
+        }
+
+        // Gestione del click sul bottone Lista Interventi
+        view.findViewById<Button>(R.id.lista_interventi).setOnClickListener {
+            view.findNavController().navigate(R.id.action_HomePageFragment_to_listaInterventi)
         }
 
         return view

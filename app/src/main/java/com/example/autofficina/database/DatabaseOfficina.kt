@@ -1,3 +1,4 @@
+
 package com.example.autofficina.database
 
 import android.content.Context
@@ -11,32 +12,35 @@ import com.example.autofficina.entities.Cliente
 import com.example.autofficina.entities.Intervento
 import com.example.autofficina.entities.Veicolo
 
-// Definizione della classe DatabaseOfficina che estende la classe RoomDatabase
-@Database(entities = [Cliente::class, Veicolo::class, Intervento::class], version = 1)
+
+@Database(
+    entities = [Cliente::class, Veicolo::class, Intervento::class],
+    version = 1,
+    exportSchema = false
+)
+
 abstract class DatabaseOfficina : RoomDatabase() {
+    abstract fun clienteDao(): DaoClienti
+    abstract fun veicoloDao(): DaoVeicoli
+    abstract fun interventoDao(): DaoInterventi
 
-    // Dichiarazione dei metodi astratti che ritornano le istanze delle DAO
-    abstract fun DaoClienti(): DaoClienti
-    abstract fun DaoVeicoli(): DaoVeicoli
-    abstract fun DaoInterventi(): DaoInterventi
-
-    // Definizione dell'oggetto companion per la creazione del database
     companion object {
-        // Dichiarazione della variabile volatile INSTANCE che rappresenta l'istanza del database
         @Volatile
         private var INSTANCE: DatabaseOfficina? = null
 
-        // Metodo per ottenere l'istanza del database. Se l'istanza esiste già, viene restituita quella,
-        // altrimenti viene creata una nuova istanza.
         fun getDatabase(context: Context): DatabaseOfficina {
-            return INSTANCE ?: synchronized(this) {
+            val tempInstance = INSTANCE
+            if (tempInstance != null) {
+                return tempInstance
+            }
+            synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     DatabaseOfficina::class.java,
-                    "officina_database"
-                ).build()
+                    "database_officina"
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
-                instance
+                return instance
             }
         }
     }

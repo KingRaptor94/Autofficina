@@ -1,5 +1,6 @@
 package com.example.autofficina.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -20,16 +21,15 @@ interface DaoVeicoli {
      * La query specificata seleziona tutti gli elementi dalla tabella "Veicolo".
      * È dichiarato "suspend" perché questa funzione deve essere eseguita in un thread separato per evitare di bloccare il thread principale dell'app.
      */
-    @Query("SELECT * FROM Veicolo ")
-    suspend fun tuttiVeicoli(): List<Veicolo>
+    @Query("SELECT * FROM veicolo WHERE id_cliente = :c LIMIT 1")
+    suspend fun veicoloDaClienteId(c: Int?): Veicolo
 
-    /**
-     * Salva una persona.
-     * @param client i dati della persona da salvare.
-     * @return il valore della chiave dell'elemento inserito.
-     */
     @Insert
-    fun salva(veicolo: Veicolo)
+    suspend fun salva(veicolo: Veicolo)
+
+    @Query("SELECT * FROM veicolo")
+    fun tuttiVeicoli(): LiveData<List<Veicolo>>
+
 
 
 

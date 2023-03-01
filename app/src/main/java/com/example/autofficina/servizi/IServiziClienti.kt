@@ -1,3 +1,5 @@
+/*
+
 package com.example.autofficina.servizi
 
 import com.example.autofficina.dao.DaoClienti
@@ -14,4 +16,4 @@ interface IServiziClienti {
 
     //  restituisce una lista di tutti i clienti presenti nel database
     fun tuttiClienti(): List<Cliente>
-}
+}*/
